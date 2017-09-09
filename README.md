@@ -1,6 +1,6 @@
 A simple script to convert multiple choice quizes written sequentially in word (.doc or .docx) documents into .csv files that can easily be imported into web based quiz programs.
 
-USAGE: Place quizes in word format in a folder called "to\_convert" within the directory containing quizConvert.py and convertQuiz.command. These two files must be in the same folder. Run convertQuiz.command to convert all .doc/.docx into .tsv format in a newly created converted\_files folder.
+USAGE: Place quizes in word format in a folder called "to\_convert" within the directory containing quizConvert.py and convertQuiz.command. These two files must be in the same folder. Run convertQuiz.command to convert all .doc/.docx into .csv format in a newly created converted\_files folder.
 
 
 FILES:
