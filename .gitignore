@@ -4,4 +4,4 @@ test.py
 *.doc
 *.docx
 *.tsv
-converted_files/test bank unit1.csv
+*.csv
