@@ -7,8 +7,8 @@ cd $script_dir
 
 mkdir converted_files
 
-# Get all .doc or .docx files in directory
-for file in `find ./ -name "*.doc*"`
+# Get all .doc or .docx files in "to_convert" directory
+for file in `find ./to_convert -name "*.doc*"`
 do
     echo $file
     # Convert to .txt using textutil, pass to quizConvert.py to process
