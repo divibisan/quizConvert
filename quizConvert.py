@@ -37,7 +37,7 @@ with open("converted_files/" + file_name, "w") as outFile:
                              \s* [Cc•][.)\s]+ (.+)\n
                              \s* [Dd•][.)\s]+ (.+)\n
                              (?:\s* [Ee•][.)\s]+ (.+)\n)?
-                             \s* Answer[\s:]* (.)""", re.X)
+                             \s* [Aa]nswer[\s:]* (.)""", re.X)
     matches = pattern.finditer(file)
     # Iterate through matches and write to outfile as comma separated entries
     #   If there is no answer E, then that match is None
