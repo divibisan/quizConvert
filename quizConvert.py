@@ -26,7 +26,7 @@ else:
 print(file_name)
 
 # Create output file in converted_files folder
-with open("converted_files/" + file_name, "w") as outFile:
+with open("converted_files/" + file_name, encoding = "utf-8", mode = "w") as outFile:
     # read in file to be converted from STDIN
     file = sys.stdin.read()
     # Use regex to extract all questions as match objects
@@ -38,11 +38,19 @@ with open("converted_files/" + file_name, "w") as outFile:
                              \s* [Dd•][.)\s]+ (.+)\n
                              (?:\s* [Ee•][.)\s]+ (.+)\n)?
                              \s* [Aa]nswer[\s:]* (.)""", re.X)
-    matches = pattern.finditer(file)
+    matches_in_document = pattern.finditer(file)
     # Iterate through matches and write to outfile as comma separated entries
     #   If there is no answer E, then that match is None
     #   will convert that to an empty string
-    for match in matches:
-        cells = [fix_none(x) for x in match.groups()]
+    for question_match in matches_in_document:
+        cells = []
+        for x in question_match.groups():
+            x = fix_none(x)
+            # Excel automatically converts fractions into dates
+            #  Detect fractions and add "=" in front to force excel to treat as text
+            fraction = re.match("^\d+/\d+", x) 
+            if fraction:
+                x = "\"=\"" + x
+            cells.append(x)
         outFile.write('"' + '","'.join(cells) + '"\n')
 print("File Successfully Converted!\n")
